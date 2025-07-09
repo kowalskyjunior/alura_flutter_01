@@ -22,7 +22,8 @@ class _TaskState extends State<Task> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: Colors.blue
+            color: (nivel >= widget.dificuldade * 10)
+                ? Colors.green : Colors.blue,
         ),
         child: Stack(
           children: [
@@ -79,7 +80,11 @@ class _TaskState extends State<Task> {
                           onPressed: () {
                             setState(() {
                               nivel++;
-                            });
+                              if (nivel > widget.dificuldade * 10){
+                                nivel = 0;
+                              }
+                              }
+                            );
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
